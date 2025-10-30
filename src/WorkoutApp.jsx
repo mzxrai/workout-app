@@ -8,8 +8,1177 @@ import {
   ChevronRight,
   Activity,
 } from "lucide-react";
-import workoutData from "./workoutData.js";
 
+const workoutData = [
+  {
+    date: "2025-10-30",
+    day: "Thursday",
+    workout_type: "Arms + Core + Back",
+    exercises: [
+      {
+        name: "Chest-Supported DB Row",
+        sets: "3",
+        reps: "10–12",
+        weight: "20 lbs",
+        rest: "90 sec",
+        notes: "Lead with back work",
+        demo_link:
+          "https://www.youtube.com/results?search_query=Chest-Supported+DB+Row+proper+form",
+      },
+      {
+        name: "Bicep Curls",
+        sets: "3",
+        reps: "10–12",
+        weight: "20 lbs",
+        rest: "90 sec",
+        notes: "3-sec eccentric",
+        demo_link:
+          "https://www.youtube.com/results?search_query=Bicep+Curls+proper+form",
+      },
+      {
+        name: "Band Face Pulls",
+        sets: "3",
+        reps: "15–20",
+        weight: "Moderate",
+        rest: "60 sec",
+        notes: "External rotation focus",
+        demo_link:
+          "https://www.youtube.com/results?search_query=Band+Face+Pulls+proper+form",
+      },
+      {
+        name: "Tricep Dips (Bench)",
+        sets: "3",
+        reps: "8–12",
+        weight: "Bodyweight",
+        rest: "90 sec",
+        notes: "Full lockout",
+        demo_link:
+          "https://www.youtube.com/results?search_query=Tricep+Dips+(Bench)+proper+form",
+      },
+      {
+        name: "Weighted Plank",
+        sets: "3",
+        reps: "30–45 sec",
+        weight: "10–15 lbs",
+        rest: "60 sec",
+        notes: "Brace hard",
+        demo_link:
+          "https://www.youtube.com/results?search_query=Weighted+Plank+proper+form",
+      },
+    ],
+  },
+  {
+    date: "2025-10-31",
+    day: "Friday",
+    workout_type: "Chest + Back",
+    exercises: [
+      {
+        name: "Chest-Supported DB Row",
+        sets: "4",
+        reps: "10–12",
+        weight: "20 lbs",
+        rest: "90 sec",
+        notes: "Pull first, build back",
+        demo_link:
+          "https://www.youtube.com/results?search_query=Chest-Supported+DB+Row+proper+form",
+      },
+      {
+        name: "Dumbbell Bench Press",
+        sets: "3",
+        reps: "8–12",
+        weight: "20 lbs",
+        rest: "90 sec",
+        notes: "Controlled",
+        demo_link:
+          "https://www.youtube.com/results?search_query=Dumbbell+Bench+Press+proper+form",
+      },
+      {
+        name: "Incline DB Press",
+        sets: "3",
+        reps: "8–10",
+        weight: "20 lbs",
+        rest: "90 sec",
+        notes: "30° incline",
+        demo_link:
+          "https://www.youtube.com/results?search_query=Incline+DB+Press+proper+form",
+      },
+      {
+        name: "Band Pull-Aparts",
+        sets: "3",
+        reps: "15–20",
+        weight: "Light–Mod",
+        rest: "45 sec",
+        notes: "Rear delt pump",
+        demo_link:
+          "https://www.youtube.com/results?search_query=Band+Pull-Aparts+proper+form",
+      },
+      {
+        name: "Peloton Ride",
+        sets: "1",
+        reps: "15–20 min",
+        weight: "Low",
+        rest: "-",
+        notes: "Stay pain-free",
+        demo_link:
+          "https://www.youtube.com/results?search_query=Peloton+Ride+proper+form",
+      },
+    ],
+  },
+  {
+    date: "2025-11-01",
+    day: "Saturday",
+    workout_type: "Rest",
+    exercises: [],
+  },
+  {
+    date: "2025-11-02",
+    day: "Sunday",
+    workout_type: "Push + Rear Delts",
+    exercises: [
+      {
+        name: "DB Shoulder Press",
+        sets: "3",
+        reps: "8–10",
+        weight: "20 lbs",
+        rest: "90 sec",
+        notes: "No knee lock",
+        demo_link:
+          "https://www.youtube.com/results?search_query=DB+Shoulder+Press+proper+form",
+      },
+      {
+        name: "Lateral Raises",
+        sets: "3",
+        reps: "12–15",
+        weight: "20 lbs",
+        rest: "60 sec",
+        notes: "Control top",
+        demo_link:
+          "https://www.youtube.com/results?search_query=Lateral+Raises+proper+form",
+      },
+      {
+        name: "Band Face Pulls",
+        sets: "3",
+        reps: "15–20",
+        weight: "Moderate",
+        rest: "60 sec",
+        notes: "High elbows, external rotation",
+        demo_link:
+          "https://www.youtube.com/results?search_query=Band+Face+Pulls+proper+form",
+      },
+      {
+        name: "Close-Grip Push-Ups",
+        sets: "3",
+        reps: "8–12",
+        weight: "Bodyweight",
+        rest: "60 sec",
+        notes: "Triceps",
+        demo_link:
+          "https://www.youtube.com/results?search_query=Close-Grip+Push-Ups+proper+form",
+      },
+    ],
+  },
+  {
+    date: "2025-11-03",
+    day: "Monday",
+    workout_type: "Back + Core",
+    exercises: [
+      {
+        name: "Chest-Supported DB Row",
+        sets: "4",
+        reps: "10–12",
+        weight: "20 lbs",
+        rest: "90 sec",
+        notes: "Volume day for back",
+        demo_link:
+          "https://www.youtube.com/results?search_query=Chest-Supported+DB+Row+proper+form",
+      },
+      {
+        name: "Single-Arm DB Row",
+        sets: "3",
+        reps: "10–12/arm",
+        weight: "20 lbs",
+        rest: "90 sec",
+        notes: "Full stretch at bottom",
+        demo_link:
+          "https://www.youtube.com/results?search_query=Single-Arm+DB+Row+proper+form",
+      },
+      {
+        name: "Band Face Pulls",
+        sets: "3",
+        reps: "12–15",
+        weight: "Moderate",
+        rest: "60 sec",
+        notes: "External rotation",
+        demo_link:
+          "https://www.youtube.com/results?search_query=Band+Face+Pulls+proper+form",
+      },
+      {
+        name: "Lying Leg Raises",
+        sets: "3",
+        reps: "10–12",
+        weight: "Bodyweight",
+        rest: "60 sec",
+        notes: "Lower back pressed",
+        demo_link:
+          "https://www.youtube.com/results?search_query=Lying+Leg+Raises+proper+form",
+      },
+      {
+        name: "Weighted Plank",
+        sets: "3",
+        reps: "30–45 sec",
+        weight: "10–15 lbs",
+        rest: "60 sec",
+        notes: "Brace hard",
+        demo_link:
+          "https://www.youtube.com/results?search_query=Weighted+Plank+proper+form",
+      },
+    ],
+  },
+  {
+    date: "2025-11-04",
+    day: "Tuesday",
+    workout_type: "Active Recovery / Peloton",
+    exercises: [
+      {
+        name: "Peloton Ride",
+        sets: "1",
+        reps: "20 min",
+        weight: "Low",
+        rest: "-",
+        notes: "Slightly longer",
+        demo_link:
+          "https://www.youtube.com/results?search_query=Peloton+Ride+proper+form",
+      },
+      {
+        name: "Mobility Flow",
+        sets: "1",
+        reps: "10–15 min",
+        weight: "-",
+        rest: "-",
+        notes: "Hip circles, 90/90 hip stretch, Cat-cow, T-spine rotations, World's greatest stretch - NO deep squats (knee protection)",
+        demo_link:
+          "https://www.youtube.com/results?search_query=10+minute+full+body+mobility+routine",
+      },
+      {
+        name: "Calf Raises",
+        sets: "3",
+        reps: "15–20",
+        weight: "Bodyweight",
+        rest: "60 sec",
+        notes: "Start light, test knees",
+        demo_link:
+          "https://www.youtube.com/results?search_query=Calf+Raises+proper+form",
+      },
+    ],
+  },
+  {
+    date: "2025-11-05",
+    day: "Wednesday",
+    workout_type: "Rest",
+    exercises: [],
+  },
+  {
+    date: "2025-11-06",
+    day: "Thursday",
+    workout_type: "Arms + Core + Back",
+    exercises: [
+      {
+        name: "Band Rows",
+        sets: "3",
+        reps: "15–20",
+        weight: "Moderate–Heavy",
+        rest: "75 sec",
+        notes: "High rep back work",
+        demo_link:
+          "https://www.youtube.com/results?search_query=Band+Rows+proper+form",
+      },
+      {
+        name: "Incline DB Curls",
+        sets: "3",
+        reps: "10–12",
+        weight: "20 lbs",
+        rest: "90 sec",
+        notes: "Push hard on these",
+        demo_link:
+          "https://www.youtube.com/results?search_query=Incline+DB+Curls+proper+form",
+      },
+      {
+        name: "Bench Dips (Feet Elevated)",
+        sets: "3",
+        reps: "8–12",
+        weight: "Bodyweight",
+        rest: "90 sec",
+        notes: "Control bottom",
+        demo_link:
+          "https://www.youtube.com/results?search_query=Bench+Dips+(Feet+Elevated)+proper+form",
+      },
+      {
+        name: "Band Face Pulls",
+        sets: "3",
+        reps: "12–15",
+        weight: "Moderate",
+        rest: "60 sec",
+        notes: "High elbows",
+        demo_link:
+          "https://www.youtube.com/results?search_query=Band+Face+Pulls+proper+form",
+      },
+      {
+        name: "Lying Leg Raises",
+        sets: "3",
+        reps: "10–12",
+        weight: "Bodyweight",
+        rest: "60 sec",
+        notes: "Lower back pressed, controlled",
+        demo_link:
+          "https://www.youtube.com/results?search_query=Lying+Leg+Raises+proper+form",
+      },
+    ],
+  },
+  {
+    date: "2025-11-07",
+    day: "Friday",
+    workout_type: "Back + Chest",
+    exercises: [
+      {
+        name: "Chest-Supported DB Row",
+        sets: "4",
+        reps: "10–12",
+        weight: "25 lbs",
+        rest: "90 sec",
+        notes: "Progress load, pull first",
+        demo_link:
+          "https://www.youtube.com/results?search_query=Chest-Supported+DB+Row+proper+form",
+      },
+      {
+        name: "Dumbbell Bench Press",
+        sets: "3",
+        reps: "8–10",
+        weight: "25 lbs",
+        rest: "90 sec",
+        notes: "Push hard",
+        demo_link:
+          "https://www.youtube.com/results?search_query=Dumbbell+Bench+Press+proper+form",
+      },
+      {
+        name: "Incline DB Press",
+        sets: "3",
+        reps: "8–10",
+        weight: "20 lbs",
+        rest: "90 sec",
+        notes: "Progress load if clean",
+        demo_link:
+          "https://www.youtube.com/results?search_query=Incline+DB+Press+proper+form",
+      },
+      {
+        name: "Band Pull-Aparts",
+        sets: "3",
+        reps: "20–25",
+        weight: "Light",
+        rest: "45 sec",
+        notes: "High volume rear delts",
+        demo_link:
+          "https://www.youtube.com/results?search_query=Band+Pull-Aparts+proper+form",
+      },
+      {
+        name: "Peloton Ride",
+        sets: "1",
+        reps: "15–20 min",
+        weight: "Low",
+        rest: "-",
+        notes: "Easy spin",
+        demo_link:
+          "https://www.youtube.com/results?search_query=Peloton+Ride+proper+form",
+      },
+    ],
+  },
+  {
+    date: "2025-11-08",
+    day: "Saturday",
+    workout_type: "Rest",
+    exercises: [],
+  },
+  {
+    date: "2025-11-09",
+    day: "Sunday",
+    workout_type: "Push + Rear Delts",
+    exercises: [
+      {
+        name: "DB Shoulder Press",
+        sets: "3",
+        reps: "8–10",
+        weight: "20 lbs",
+        rest: "90 sec",
+        notes: "Push hard",
+        demo_link:
+          "https://www.youtube.com/results?search_query=DB+Shoulder+Press+proper+form",
+      },
+      {
+        name: "Lateral Raises",
+        sets: "3",
+        reps: "12–15",
+        weight: "20 lbs",
+        rest: "60 sec",
+        notes: "Last set drop",
+        demo_link:
+          "https://www.youtube.com/results?search_query=Lateral+Raises+proper+form",
+      },
+      {
+        name: "Band Face Pulls",
+        sets: "3",
+        reps: "15–20",
+        weight: "Moderate",
+        rest: "60 sec",
+        notes: "External rotation focus",
+        demo_link:
+          "https://www.youtube.com/results?search_query=Band+Face+Pulls+proper+form",
+      },
+      {
+        name: "Bench Dips",
+        sets: "3",
+        reps: "10–12",
+        weight: "Bodyweight",
+        rest: "60–75 sec",
+        notes: "Full lock",
+        demo_link:
+          "https://www.youtube.com/results?search_query=Bench+Dips+proper+form",
+      },
+    ],
+  },
+  {
+    date: "2025-11-10",
+    day: "Monday",
+    workout_type: "Core + Back",
+    exercises: [
+      {
+        name: "Reverse Crunch",
+        sets: "3",
+        reps: "12–15",
+        weight: "Bodyweight",
+        rest: "60 sec",
+        notes: "Posterior tilt",
+        demo_link:
+          "https://www.youtube.com/results?search_query=Reverse+Crunch+proper+form",
+      },
+      {
+        name: "Band Rows (High rep)",
+        sets: "3",
+        reps: "15–20",
+        weight: "Light–Mod",
+        rest: "60 sec",
+        notes: "Tempo 2-0-2",
+        demo_link:
+          "https://www.youtube.com/results?search_query=Band+Rows+(High+rep)+proper+form",
+      },
+      {
+        name: "Prone YTWs",
+        sets: "3",
+        reps: "10–12",
+        weight: "Bodyweight",
+        rest: "60 sec",
+        notes: "Scap control",
+        demo_link:
+          "https://www.youtube.com/results?search_query=Prone+YTWs+proper+form",
+      },
+      {
+        name: "Side Plank",
+        sets: "3",
+        reps: "30–45 sec/side",
+        weight: "Bodyweight",
+        rest: "45–60 sec",
+        notes: "Hips tall",
+        demo_link:
+          "https://www.youtube.com/results?search_query=Side+Plank+proper+form",
+      },
+    ],
+  },
+  {
+    date: "2025-11-11",
+    day: "Tuesday",
+    workout_type: "Active Recovery / Peloton",
+    exercises: [
+      {
+        name: "Peloton Ride",
+        sets: "1",
+        reps: "15–20 min",
+        weight: "Low",
+        rest: "-",
+        notes: "Optional",
+        demo_link:
+          "https://www.youtube.com/results?search_query=Peloton+Ride+proper+form",
+      },
+      {
+        name: "Mobility Flow",
+        sets: "1",
+        reps: "15 min",
+        weight: "-",
+        rest: "-",
+        notes: "Hip 90/90 stretch, Arm circles, Shoulder dislocations with band, Thread the needle, Child's pose - NO deep squats (knee protection)",
+        demo_link:
+          "https://www.youtube.com/results?search_query=hip+and+shoulder+mobility+routine",
+      },
+      {
+        name: "Calf Raises",
+        sets: "3",
+        reps: "15–20",
+        weight: "Bodyweight",
+        rest: "60 sec",
+        notes: "Progress if feeling good",
+        demo_link:
+          "https://www.youtube.com/results?search_query=Calf+Raises+proper+form",
+      },
+    ],
+  },
+  {
+    date: "2025-11-12",
+    day: "Wednesday",
+    workout_type: "Rest",
+    exercises: [],
+  },
+  {
+    date: "2025-11-13",
+    day: "Thursday",
+    workout_type: "Arms + Core + Back",
+    exercises: [
+      {
+        name: "Single-Arm DB Row",
+        sets: "3",
+        reps: "12–14/arm",
+        weight: "25 lbs",
+        rest: "75 sec",
+        notes: "Unilateral back work",
+        demo_link:
+          "https://www.youtube.com/results?search_query=Single-Arm+DB+Row+proper+form",
+      },
+      {
+        name: "Bicep Curls",
+        sets: "3",
+        reps: "12–14",
+        weight: "25 lbs",
+        rest: "75 sec",
+        notes: "Shorter rest",
+        demo_link:
+          "https://www.youtube.com/results?search_query=Bicep+Curls+proper+form",
+      },
+      {
+        name: "Band Pull-Aparts",
+        sets: "3",
+        reps: "20–25",
+        weight: "Light",
+        rest: "45 sec",
+        notes: "High rep rear delts",
+        demo_link:
+          "https://www.youtube.com/results?search_query=Band+Pull-Aparts+proper+form",
+      },
+      {
+        name: "Bench Dips",
+        sets: "3",
+        reps: "10–14",
+        weight: "Bodyweight",
+        rest: "75 sec",
+        notes: "Density up",
+        demo_link:
+          "https://www.youtube.com/results?search_query=Bench+Dips+proper+form",
+      },
+      {
+        name: "Plank + Reach",
+        sets: "3",
+        reps: "8/side",
+        weight: "Bodyweight",
+        rest: "45–60 sec",
+        notes: "Anti-rotation",
+        demo_link:
+          "https://www.youtube.com/results?search_query=Plank+++Reach+proper+form",
+      },
+    ],
+  },
+  {
+    date: "2025-11-14",
+    day: "Friday",
+    workout_type: "Back + Chest",
+    exercises: [
+      {
+        name: "Band Rows",
+        sets: "3",
+        reps: "15–20",
+        weight: "Moderate–Heavy",
+        rest: "60–75 sec",
+        notes: "High volume, full stretch",
+        demo_link:
+          "https://www.youtube.com/results?search_query=Band+Rows+proper+form",
+      },
+      {
+        name: "Dumbbell Bench Press",
+        sets: "3",
+        reps: "10–12",
+        weight: "30 lbs",
+        rest: "75 sec",
+        notes: "Shorter rest",
+        demo_link:
+          "https://www.youtube.com/results?search_query=Dumbbell+Bench+Press+proper+form",
+      },
+      {
+        name: "Incline DB Press",
+        sets: "3",
+        reps: "10–12",
+        weight: "25 lbs",
+        rest: "75 sec",
+        notes: "Density",
+        demo_link:
+          "https://www.youtube.com/results?search_query=Incline+DB+Press+proper+form",
+      },
+      {
+        name: "Band Pull-Aparts",
+        sets: "3",
+        reps: "20–25",
+        weight: "Light",
+        rest: "45 sec",
+        notes: "Rear delt pump",
+        demo_link:
+          "https://www.youtube.com/results?search_query=Band+Pull-Aparts+proper+form",
+      },
+      {
+        name: "Peloton Ride",
+        sets: "1",
+        reps: "15–20 min",
+        weight: "Low",
+        rest: "-",
+        notes: "Optional",
+        demo_link:
+          "https://www.youtube.com/results?search_query=Peloton+Ride+proper+form",
+      },
+    ],
+  },
+  {
+    date: "2025-11-15",
+    day: "Saturday",
+    workout_type: "Rest",
+    exercises: [],
+  },
+  {
+    date: "2025-11-16",
+    day: "Sunday",
+    workout_type: "Push + Rear Delts",
+    exercises: [
+      {
+        name: "DB Shoulder Press",
+        sets: "3",
+        reps: "10–12",
+        weight: "25 lbs",
+        rest: "75 sec",
+        notes: "Density up",
+        demo_link:
+          "https://www.youtube.com/results?search_query=DB+Shoulder+Press+proper+form",
+      },
+      {
+        name: "Lateral Raises (Partial reps at end)",
+        sets: "3",
+        reps: "12–15 + 5",
+        weight: "20 lbs",
+        rest: "60 sec",
+        notes: "Pump",
+        demo_link:
+          "https://www.youtube.com/results?search_query=Lateral+Raises+(Partial+reps+at+end)+proper+form",
+      },
+      {
+        name: "Band Face Pulls",
+        sets: "3",
+        reps: "15–20",
+        weight: "Moderate",
+        rest: "60 sec",
+        notes: "External rotation",
+        demo_link:
+          "https://www.youtube.com/results?search_query=Band+Face+Pulls+proper+form",
+      },
+      {
+        name: "Close-Grip Push-Ups",
+        sets: "3",
+        reps: "10–14",
+        weight: "Bodyweight",
+        rest: "60 sec",
+        notes: "AMRAP-1",
+        demo_link:
+          "https://www.youtube.com/results?search_query=Close-Grip+Push-Ups+proper+form",
+      },
+    ],
+  },
+  {
+    date: "2025-11-17",
+    day: "Monday",
+    workout_type: "Core + Back",
+    exercises: [
+      {
+        name: "Reverse Crunch",
+        sets: "3",
+        reps: "12–15",
+        weight: "Bodyweight",
+        rest: "60 sec",
+        notes: "Posterior tilt",
+        demo_link:
+          "https://www.youtube.com/results?search_query=Reverse+Crunch+proper+form",
+      },
+      {
+        name: "Band Rows (High rep)",
+        sets: "3",
+        reps: "15–20",
+        weight: "Light–Mod",
+        rest: "60 sec",
+        notes: "Tempo 2-0-2",
+        demo_link:
+          "https://www.youtube.com/results?search_query=Band+Rows+(High+rep)+proper+form",
+      },
+      {
+        name: "Prone YTWs",
+        sets: "3",
+        reps: "10–12",
+        weight: "Bodyweight",
+        rest: "60 sec",
+        notes: "Scap control",
+        demo_link:
+          "https://www.youtube.com/results?search_query=Prone+YTWs+proper+form",
+      },
+      {
+        name: "Side Plank",
+        sets: "3",
+        reps: "30–45 sec/side",
+        weight: "Bodyweight",
+        rest: "45–60 sec",
+        notes: "Hips tall",
+        demo_link:
+          "https://www.youtube.com/results?search_query=Side+Plank+proper+form",
+      },
+    ],
+  },
+  {
+    date: "2025-11-18",
+    day: "Tuesday",
+    workout_type: "Active Recovery / Peloton",
+    exercises: [
+      {
+        name: "Peloton Ride",
+        sets: "1",
+        reps: "15–20 min",
+        weight: "Low",
+        rest: "-",
+        notes: "Optional",
+        demo_link:
+          "https://www.youtube.com/results?search_query=Peloton+Ride+proper+form",
+      },
+      {
+        name: "Mobility Flow",
+        sets: "1",
+        reps: "15 min",
+        weight: "-",
+        rest: "-",
+        notes: "Hip 90/90 stretch, Arm circles, Shoulder dislocations with band, Thread the needle, Child's pose - NO deep squats (knee protection)",
+        demo_link:
+          "https://www.youtube.com/results?search_query=hip+and+shoulder+mobility+routine",
+      },
+      {
+        name: "Calf Raises",
+        sets: "3",
+        reps: "15–20",
+        weight: "10 lbs",
+        rest: "60 sec",
+        notes: "Add light weight if comfortable",
+        demo_link:
+          "https://www.youtube.com/results?search_query=Calf+Raises+proper+form",
+      },
+    ],
+  },
+  {
+    date: "2025-11-19",
+    day: "Wednesday",
+    workout_type: "Rest",
+    exercises: [],
+  },
+  {
+    date: "2025-11-20",
+    day: "Thursday",
+    workout_type: "Arms + Core + Back",
+    exercises: [
+      {
+        name: "Single-Arm DB Row",
+        sets: "3",
+        reps: "12–14/arm",
+        weight: "30 lbs",
+        rest: "75 sec",
+        notes: "Unilateral back work",
+        demo_link:
+          "https://www.youtube.com/results?search_query=Single-Arm+DB+Row+proper+form",
+      },
+      {
+        name: "Bicep Curls",
+        sets: "3",
+        reps: "12–14",
+        weight: "25 lbs",
+        rest: "75 sec",
+        notes: "Shorter rest",
+        demo_link:
+          "https://www.youtube.com/results?search_query=Bicep+Curls+proper+form",
+      },
+      {
+        name: "Band Pull-Aparts",
+        sets: "3",
+        reps: "20–25",
+        weight: "Light",
+        rest: "45 sec",
+        notes: "High rep rear delts",
+        demo_link:
+          "https://www.youtube.com/results?search_query=Band+Pull-Aparts+proper+form",
+      },
+      {
+        name: "Bench Dips",
+        sets: "3",
+        reps: "10–14",
+        weight: "Bodyweight",
+        rest: "75 sec",
+        notes: "Density up",
+        demo_link:
+          "https://www.youtube.com/results?search_query=Bench+Dips+proper+form",
+      },
+      {
+        name: "Plank + Reach",
+        sets: "3",
+        reps: "8/side",
+        weight: "Bodyweight",
+        rest: "45–60 sec",
+        notes: "Anti-rotation",
+        demo_link:
+          "https://www.youtube.com/results?search_query=Plank+++Reach+proper+form",
+      },
+    ],
+  },
+  {
+    date: "2025-11-21",
+    day: "Friday",
+    workout_type: "Back + Chest",
+    exercises: [
+      {
+        name: "Band Rows",
+        sets: "3",
+        reps: "15–20",
+        weight: "Moderate–Heavy",
+        rest: "60–75 sec",
+        notes: "High volume, full stretch",
+        demo_link:
+          "https://www.youtube.com/results?search_query=Band+Rows+proper+form",
+      },
+      {
+        name: "Dumbbell Bench Press",
+        sets: "3",
+        reps: "10–12",
+        weight: "30 lbs",
+        rest: "75 sec",
+        notes: "Shorter rest",
+        demo_link:
+          "https://www.youtube.com/results?search_query=Dumbbell+Bench+Press+proper+form",
+      },
+      {
+        name: "Incline DB Press",
+        sets: "3",
+        reps: "10–12",
+        weight: "25 lbs",
+        rest: "75 sec",
+        notes: "Density",
+        demo_link:
+          "https://www.youtube.com/results?search_query=Incline+DB+Press+proper+form",
+      },
+      {
+        name: "Band Pull-Aparts",
+        sets: "3",
+        reps: "20–25",
+        weight: "Light",
+        rest: "45 sec",
+        notes: "Rear delt pump",
+        demo_link:
+          "https://www.youtube.com/results?search_query=Band+Pull-Aparts+proper+form",
+      },
+      {
+        name: "Peloton Ride",
+        sets: "1",
+        reps: "15–20 min",
+        weight: "Low",
+        rest: "-",
+        notes: "Optional",
+        demo_link:
+          "https://www.youtube.com/results?search_query=Peloton+Ride+proper+form",
+      },
+    ],
+  },
+  {
+    date: "2025-11-22",
+    day: "Saturday",
+    workout_type: "Rest",
+    exercises: [],
+  },
+  {
+    date: "2025-11-23",
+    day: "Sunday",
+    workout_type: "Push + Rear Delts",
+    exercises: [
+      {
+        name: "DB Shoulder Press",
+        sets: "3",
+        reps: "10–12",
+        weight: "25 lbs",
+        rest: "75 sec",
+        notes: "Density up",
+        demo_link:
+          "https://www.youtube.com/results?search_query=DB+Shoulder+Press+proper+form",
+      },
+      {
+        name: "Lateral Raises (Partial reps at end)",
+        sets: "3",
+        reps: "12–15 + 5",
+        weight: "25 lbs",
+        rest: "60 sec",
+        notes: "Pump",
+        demo_link:
+          "https://www.youtube.com/results?search_query=Lateral+Raises+(Partial+reps+at+end)+proper+form",
+      },
+      {
+        name: "Band Face Pulls",
+        sets: "3",
+        reps: "15–20",
+        weight: "Moderate",
+        rest: "60 sec",
+        notes: "External rotation",
+        demo_link:
+          "https://www.youtube.com/results?search_query=Band+Face+Pulls+proper+form",
+      },
+      {
+        name: "Close-Grip Push-Ups",
+        sets: "3",
+        reps: "10–14",
+        weight: "Bodyweight",
+        rest: "60 sec",
+        notes: "AMRAP-1",
+        demo_link:
+          "https://www.youtube.com/results?search_query=Close-Grip+Push-Ups+proper+form",
+      },
+    ],
+  },
+  {
+    date: "2025-11-24",
+    day: "Monday",
+    workout_type: "Core + Back",
+    exercises: [
+      {
+        name: "Reverse Crunch",
+        sets: "3",
+        reps: "12–15",
+        weight: "Bodyweight",
+        rest: "60 sec",
+        notes: "Posterior tilt",
+        demo_link:
+          "https://www.youtube.com/results?search_query=Reverse+Crunch+proper+form",
+      },
+      {
+        name: "Plank Hold",
+        sets: "3",
+        reps: "30–45 sec",
+        weight: "Bodyweight",
+        rest: "60 sec",
+        notes: "Brace",
+        demo_link:
+          "https://www.youtube.com/results?search_query=Plank+Hold+proper+form",
+      },
+      {
+        name: "Band Rows (Unilateral)",
+        sets: "3",
+        reps: "12/side",
+        weight: "Light–Mod",
+        rest: "60 sec",
+        notes: "Stability",
+        demo_link:
+          "https://www.youtube.com/results?search_query=Band+Rows+(Unilateral)+proper+form",
+      },
+    ],
+  },
+  {
+    date: "2025-11-25",
+    day: "Tuesday",
+    workout_type: "Arms + Core + Back (Light)",
+    exercises: [
+      {
+        name: "Band Rows",
+        sets: "3",
+        reps: "15–20",
+        weight: "Light–Mod",
+        rest: "60 sec",
+        notes: "Deload week - lighter",
+        demo_link:
+          "https://www.youtube.com/results?search_query=Band+Rows+proper+form",
+      },
+      {
+        name: "Band Bicep Curls",
+        sets: "3",
+        reps: "12–15",
+        weight: "20 lbs",
+        rest: "60 sec",
+        notes: "Slow tempo",
+        demo_link:
+          "https://www.youtube.com/results?search_query=Band+Bicep+Curls+proper+form",
+      },
+      {
+        name: "Band Face Pulls",
+        sets: "3",
+        reps: "15–20",
+        weight: "Light",
+        rest: "45–60 sec",
+        notes: "Upper back health",
+        demo_link:
+          "https://www.youtube.com/results?search_query=Band+Face+Pulls+proper+form",
+      },
+      {
+        name: "Bench/Chair Dips",
+        sets: "3",
+        reps: "10–12",
+        weight: "Bodyweight",
+        rest: "60 sec",
+        notes: "Control bottom",
+        demo_link:
+          "https://www.youtube.com/results?search_query=Bench/Chair+Dips+proper+form",
+      },
+      {
+        name: "Plank Shoulder Taps",
+        sets: "3",
+        reps: "20 taps",
+        weight: "Bodyweight",
+        rest: "60 sec",
+        notes: "Anti-rotation",
+        demo_link:
+          "https://www.youtube.com/results?search_query=Plank+Shoulder+Taps+proper+form",
+      },
+    ],
+  },
+  {
+    date: "2025-11-26",
+    day: "Wednesday",
+    workout_type: "Back + Chest (Light)",
+    exercises: [
+      {
+        name: "Band Rows",
+        sets: "4",
+        reps: "15–20",
+        weight: "Light–Mod",
+        rest: "60 sec",
+        notes: "Pull priority, deload",
+        demo_link:
+          "https://www.youtube.com/results?search_query=Band+Rows+proper+form",
+      },
+      {
+        name: "Push-Ups",
+        sets: "3",
+        reps: "10–15",
+        weight: "Bodyweight",
+        rest: "60 sec",
+        notes: "Full range",
+        demo_link:
+          "https://www.youtube.com/results?search_query=Push-Ups+proper+form",
+      },
+      {
+        name: "Prone YTWs",
+        sets: "3",
+        reps: "10–12",
+        weight: "Bodyweight",
+        rest: "60 sec",
+        notes: "Scapular health",
+        demo_link:
+          "https://www.youtube.com/results?search_query=Prone+YTWs+proper+form",
+      },
+      {
+        name: "Supermans",
+        sets: "3",
+        reps: "10–12",
+        weight: "Bodyweight",
+        rest: "60 sec",
+        notes: "Pause at top",
+        demo_link:
+          "https://www.youtube.com/results?search_query=Supermans+proper+form",
+      },
+      {
+        name: "Band Pull-Aparts",
+        sets: "3",
+        reps: "20–25",
+        weight: "Light",
+        rest: "45 sec",
+        notes: "Rear delt finisher",
+        demo_link:
+          "https://www.youtube.com/results?search_query=Band+Pull-Aparts+proper+form",
+      },
+    ],
+  },
+  {
+    date: "2025-11-27",
+    day: "Thursday",
+    workout_type: "Rest",
+    exercises: [],
+  },
+  {
+    date: "2025-11-28",
+    day: "Friday",
+    workout_type: "Arms + Core + Back (Light)",
+    exercises: [
+      {
+        name: "Band Rows",
+        sets: "3",
+        reps: "15–20",
+        weight: "Light–Mod",
+        rest: "60 sec",
+        notes: "Deload week - lighter",
+        demo_link:
+          "https://www.youtube.com/results?search_query=Band+Rows+proper+form",
+      },
+      {
+        name: "Band Bicep Curls",
+        sets: "3",
+        reps: "12–15",
+        weight: "20 lbs",
+        rest: "60 sec",
+        notes: "Slow tempo",
+        demo_link:
+          "https://www.youtube.com/results?search_query=Band+Bicep+Curls+proper+form",
+      },
+      {
+        name: "Band Face Pulls",
+        sets: "3",
+        reps: "15–20",
+        weight: "Light",
+        rest: "45–60 sec",
+        notes: "Upper back health",
+        demo_link:
+          "https://www.youtube.com/results?search_query=Band+Face+Pulls+proper+form",
+      },
+      {
+        name: "Bench/Chair Dips",
+        sets: "3",
+        reps: "10–12",
+        weight: "Bodyweight",
+        rest: "60 sec",
+        notes: "Control bottom",
+        demo_link:
+          "https://www.youtube.com/results?search_query=Bench/Chair+Dips+proper+form",
+      },
+      {
+        name: "Plank Shoulder Taps",
+        sets: "3",
+        reps: "20 taps",
+        weight: "Bodyweight",
+        rest: "60 sec",
+        notes: "Anti-rotation",
+        demo_link:
+          "https://www.youtube.com/results?search_query=Plank+Shoulder+Taps+proper+form",
+      },
+    ],
+  },
+  {
+    date: "2025-11-29",
+    day: "Saturday",
+    workout_type: "Rest",
+    exercises: [],
+  },
+];
 
 const WorkoutApp = () => {
   const [completed, setCompleted] = useState(() => {
@@ -78,14 +1247,10 @@ const WorkoutApp = () => {
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center gap-2 mb-1">
                         <h3 className="text-base font-semibold text-gray-900 tracking-tight">
-                          {(() => {
-                            const [year, month, day] = workout.date.split("-");
-                            const date = new Date(parseInt(year), parseInt(month) - 1, parseInt(day));
-                            return date.toLocaleDateString("en-US", {
-                              month: "short",
-                              day: "numeric",
-                            });
-                          })()}
+                          {new Date(workout.date).toLocaleDateString("en-US", {
+                            month: "short",
+                            day: "numeric",
+                          })}
                         </h3>
                         <span className="text-sm text-gray-500">{workout.day}</span>
                       </div>
