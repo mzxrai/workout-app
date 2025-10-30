@@ -1425,3 +1425,5 @@ const workoutData = [
     exercises: [],
   },
 ];
+
+export default workoutData;
