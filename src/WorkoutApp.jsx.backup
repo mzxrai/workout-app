@@ -1,0 +1,1357 @@
+import React, { useState, useEffect } from "react";
+import {
+  Check,
+  Circle,
+  Calendar,
+  LayoutList,
+  Play,
+  ChevronRight,
+  Activity,
+} from "lucide-react";
+
+const workoutData = [
+  {
+    date: "2025-10-30",
+    day: "Thursday",
+    workout_type: "Arms + Core + Back",
+    exercises: [
+      {
+        name: "Chest-Supported DB Row",
+        sets: "3",
+        reps: "10–12",
+        weight: "20–30 lbs",
+        rest: "90 sec",
+        notes: "Lead with back work",
+        demo_link:
+          "https://www.youtube.com/watch?v=eXRFd8N3Z7Q",
+      },
+      {
+        name: "Bicep Curls",
+        sets: "3",
+        reps: "10–12",
+        weight: "15–25 lbs",
+        rest: "90 sec",
+        notes: "3-sec eccentric",
+        demo_link:
+          "https://www.youtube.com/watch?v=QZEqB6wUPxQ",
+      },
+      {
+        name: "Band Face Pulls",
+        sets: "3",
+        reps: "15–20",
+        weight: "Moderate",
+        rest: "60 sec",
+        notes: "External rotation focus",
+        demo_link:
+          "https://www.youtube.com/watch?v=eIq5CB9JfKE",
+      },
+      {
+        name: "Tricep Dips (Bench)",
+        sets: "3",
+        reps: "8–12",
+        weight: "Bodyweight",
+        rest: "90 sec",
+        notes: "Full lockout",
+        demo_link:
+          "https://www.youtube.com/watch?v=0326dy_-CzM",
+      },
+      {
+        name: "Weighted Plank",
+        sets: "3",
+        reps: "30–45 sec",
+        weight: "10–15 lbs",
+        rest: "60 sec",
+        notes: "Brace hard",
+        demo_link:
+          "https://www.youtube.com/watch?v=39yB4VGMXvg",
+      },
+    ],
+  },
+  {
+    date: "2025-10-31",
+    day: "Friday",
+    workout_type: "Chest + Back",
+    exercises: [
+      {
+        name: "Chest-Supported DB Row",
+        sets: "4",
+        reps: "10–12",
+        weight: "20–30 lbs",
+        rest: "90 sec",
+        notes: "Pull first, build back",
+        demo_link:
+          "https://www.youtube.com/watch?v=eXRFd8N3Z7Q",
+      },
+      {
+        name: "Dumbbell Bench Press",
+        sets: "3",
+        reps: "8–12",
+        weight: "25–30 lbs",
+        rest: "90 sec",
+        notes: "Controlled",
+        demo_link:
+          "https://www.youtube.com/watch?v=QsYre__-aro",
+      },
+      {
+        name: "Incline DB Press",
+        sets: "3",
+        reps: "8–10",
+        weight: "20–25 lbs",
+        rest: "90 sec",
+        notes: "30° incline",
+        demo_link:
+          "https://www.youtube.com/watch?v=8iPEnn-ltC8",
+      },
+      {
+        name: "Band Pull-Aparts",
+        sets: "3",
+        reps: "15–20",
+        weight: "Light–Mod",
+        rest: "45 sec",
+        notes: "Rear delt pump",
+        demo_link:
+          "https://www.youtube.com/watch?v=0Po47vvj9g4",
+      },
+      {
+        name: "Peloton Ride",
+        sets: "1",
+        reps: "15–20 min",
+        weight: "Low",
+        rest: "-",
+        notes: "Stay pain-free",
+        demo_link:
+          "https://www.youtube.com/watch?v=VWxes0CoCKM",
+      },
+    ],
+  },
+  {
+    date: "2025-11-01",
+    day: "Saturday",
+    workout_type: "Rest",
+    exercises: [],
+  },
+  {
+    date: "2025-11-02",
+    day: "Sunday",
+    workout_type: "Push + Rear Delts",
+    exercises: [
+      {
+        name: "DB Shoulder Press",
+        sets: "3",
+        reps: "8–10",
+        weight: "20–25 lbs",
+        rest: "90 sec",
+        notes: "No knee lock",
+        demo_link:
+          "https://www.youtube.com/watch?v=qEwKCR5JCog",
+      },
+      {
+        name: "Lateral Raises",
+        sets: "3",
+        reps: "12–15",
+        weight: "15 lbs",
+        rest: "60 sec",
+        notes: "Control top",
+        demo_link:
+          "https://www.youtube.com/watch?v=3VcKaXpzqRo",
+      },
+      {
+        name: "Band Face Pulls",
+        sets: "3",
+        reps: "15–20",
+        weight: "Moderate",
+        rest: "60 sec",
+        notes: "High elbows, external rotation",
+        demo_link:
+          "https://www.youtube.com/watch?v=eIq5CB9JfKE",
+      },
+      {
+        name: "Close-Grip Push-Ups",
+        sets: "3",
+        reps: "8–12",
+        weight: "Bodyweight",
+        rest: "60 sec",
+        notes: "Triceps",
+        demo_link:
+          "https://www.youtube.com/watch?v=GN8EkLpezEg",
+      },
+    ],
+  },
+  {
+    date: "2025-11-03",
+    day: "Monday",
+    workout_type: "Back + Core",
+    exercises: [
+      {
+        name: "Chest-Supported DB Row",
+        sets: "4",
+        reps: "10–12",
+        weight: "20–30 lbs",
+        rest: "90 sec",
+        notes: "Volume day for back",
+        demo_link:
+          "https://www.youtube.com/watch?v=eXRFd8N3Z7Q",
+      },
+      {
+        name: "Single-Arm DB Row",
+        sets: "3",
+        reps: "10–12/arm",
+        weight: "25–30 lbs",
+        rest: "90 sec",
+        notes: "Full stretch at bottom",
+        demo_link:
+          "https://www.youtube.com/watch?v=roCP6wCXPqo",
+      },
+      {
+        name: "Band Face Pulls",
+        sets: "3",
+        reps: "12–15",
+        weight: "Moderate",
+        rest: "60 sec",
+        notes: "External rotation",
+        demo_link:
+          "https://www.youtube.com/watch?v=eIq5CB9JfKE",
+      },
+      {
+        name: "Dead Bugs",
+        sets: "3",
+        reps: "8/side",
+        weight: "Bodyweight",
+        rest: "60 sec",
+        notes: "Ribs down",
+        demo_link:
+          "https://www.youtube.com/watch?v=g_BYB0R-4Ws",
+      },
+      {
+        name: "Weighted Plank",
+        sets: "3",
+        reps: "30–45 sec",
+        weight: "10–15 lbs",
+        rest: "60 sec",
+        notes: "Brace hard",
+        demo_link:
+          "https://www.youtube.com/watch?v=39yB4VGMXvg",
+      },
+    ],
+  },
+  {
+    date: "2025-11-04",
+    day: "Tuesday",
+    workout_type: "Active Recovery / Peloton",
+    exercises: [
+      {
+        name: "Peloton Ride",
+        sets: "1",
+        reps: "20 min",
+        weight: "Low",
+        rest: "-",
+        notes: "Slightly longer",
+        demo_link:
+          "https://www.youtube.com/watch?v=VWxes0CoCKM",
+      },
+      {
+        name: "Mobility Flow",
+        sets: "1",
+        reps: "10–15 min",
+        weight: "-",
+        rest: "-",
+        notes: "Add T-spine openers",
+        demo_link:
+          "https://www.youtube.com/watch?v=qULTwquOuT4",
+      },
+    ],
+  },
+  {
+    date: "2025-11-05",
+    day: "Wednesday",
+    workout_type: "Rest",
+    exercises: [],
+  },
+  {
+    date: "2025-11-06",
+    day: "Thursday",
+    workout_type: "Arms + Core + Back",
+    exercises: [
+      {
+        name: "Band Rows",
+        sets: "3",
+        reps: "15–20",
+        weight: "Moderate–Heavy",
+        rest: "75 sec",
+        notes: "High rep back work",
+        demo_link:
+          "https://www.youtube.com/watch?v=FFBhJguhDWc",
+      },
+      {
+        name: "Incline DB Curls",
+        sets: "3",
+        reps: "10–12",
+        weight: "15–20 lbs",
+        rest: "90 sec",
+        notes: "Push hard on these",
+        demo_link:
+          "https://www.youtube.com/watch?v=soxrZlIl35U",
+      },
+      {
+        name: "Bench Dips (Feet Elevated)",
+        sets: "3",
+        reps: "8–12",
+        weight: "Bodyweight",
+        rest: "90 sec",
+        notes: "Control bottom",
+        demo_link:
+          "https://www.youtube.com/watch?v=0326dy_-CzM",
+      },
+      {
+        name: "Band Face Pulls",
+        sets: "3",
+        reps: "12–15",
+        weight: "Moderate",
+        rest: "60 sec",
+        notes: "High elbows",
+        demo_link:
+          "https://www.youtube.com/watch?v=eIq5CB9JfKE",
+      },
+      {
+        name: "Weighted Dead Bug",
+        sets: "3",
+        reps: "8/side",
+        weight: "10–15 lbs",
+        rest: "60 sec",
+        notes: "Slow",
+        demo_link:
+          "https://www.youtube.com/watch?v=4XLEnwUr1d8",
+      },
+    ],
+  },
+  {
+    date: "2025-11-07",
+    day: "Friday",
+    workout_type: "Back + Chest",
+    exercises: [
+      {
+        name: "Chest-Supported DB Row",
+        sets: "4",
+        reps: "10–12",
+        weight: "25–30 lbs",
+        rest: "90 sec",
+        notes: "Progress load, pull first",
+        demo_link:
+          "https://www.youtube.com/watch?v=eXRFd8N3Z7Q",
+      },
+      {
+        name: "Dumbbell Bench Press",
+        sets: "3",
+        reps: "8–10",
+        weight: "25–30 lbs",
+        rest: "90 sec",
+        notes: "Push hard",
+        demo_link:
+          "https://www.youtube.com/watch?v=QsYre__-aro",
+      },
+      {
+        name: "Incline DB Press",
+        sets: "3",
+        reps: "8–10",
+        weight: "20–25 lbs",
+        rest: "90 sec",
+        notes: "Progress load if clean",
+        demo_link:
+          "https://www.youtube.com/watch?v=8iPEnn-ltC8",
+      },
+      {
+        name: "Band Pull-Aparts",
+        sets: "3",
+        reps: "20–25",
+        weight: "Light",
+        rest: "45 sec",
+        notes: "High volume rear delts",
+        demo_link:
+          "https://www.youtube.com/watch?v=0Po47vvj9g4",
+      },
+      {
+        name: "Peloton Ride",
+        sets: "1",
+        reps: "15–20 min",
+        weight: "Low",
+        rest: "-",
+        notes: "Easy spin",
+        demo_link:
+          "https://www.youtube.com/watch?v=VWxes0CoCKM",
+      },
+    ],
+  },
+  {
+    date: "2025-11-08",
+    day: "Saturday",
+    workout_type: "Rest",
+    exercises: [],
+  },
+  {
+    date: "2025-11-09",
+    day: "Sunday",
+    workout_type: "Push + Rear Delts",
+    exercises: [
+      {
+        name: "DB Shoulder Press",
+        sets: "3",
+        reps: "8–10",
+        weight: "20–25 lbs",
+        rest: "90 sec",
+        notes: "Push hard",
+        demo_link:
+          "https://www.youtube.com/watch?v=qEwKCR5JCog",
+      },
+      {
+        name: "Lateral Raises",
+        sets: "3",
+        reps: "12–15",
+        weight: "15 lbs",
+        rest: "60 sec",
+        notes: "Last set drop",
+        demo_link:
+          "https://www.youtube.com/watch?v=3VcKaXpzqRo",
+      },
+      {
+        name: "Band Face Pulls",
+        sets: "3",
+        reps: "15–20",
+        weight: "Moderate",
+        rest: "60 sec",
+        notes: "External rotation focus",
+        demo_link:
+          "https://www.youtube.com/watch?v=eIq5CB9JfKE",
+      },
+      {
+        name: "Bench Dips",
+        sets: "3",
+        reps: "10–12",
+        weight: "Bodyweight",
+        rest: "60–75 sec",
+        notes: "Full lock",
+        demo_link:
+          "https://www.youtube.com/watch?v=0326dy_-CzM",
+      },
+    ],
+  },
+  {
+    date: "2025-11-10",
+    day: "Monday",
+    workout_type: "Core + Back",
+    exercises: [
+      {
+        name: "Reverse Crunch",
+        sets: "3",
+        reps: "12–15",
+        weight: "Bodyweight",
+        rest: "60 sec",
+        notes: "Posterior tilt",
+        demo_link:
+          "https://www.youtube.com/watch?v=hyB9zn1eSLk",
+      },
+      {
+        name: "Band Rows (High rep)",
+        sets: "3",
+        reps: "15–20",
+        weight: "Light–Mod",
+        rest: "60 sec",
+        notes: "Tempo 2-0-2",
+        demo_link: "https://www.youtube.com/watch?v=X4vTKJoG7u0",
+      },
+      {
+        name: "Prone YTWs",
+        sets: "3",
+        reps: "10–12",
+        weight: "Bodyweight",
+        rest: "60 sec",
+        notes: "Scap control",
+        demo_link:
+          "https://www.youtube.com/watch?v=eUWCjADbSfM",
+      },
+      {
+        name: "Side Plank",
+        sets: "3",
+        reps: "30–45 sec/side",
+        weight: "Bodyweight",
+        rest: "45–60 sec",
+        notes: "Hips tall",
+        demo_link:
+          "https://www.youtube.com/watch?v=K2VljzCC4gs",
+      },
+    ],
+  },
+  {
+    date: "2025-11-11",
+    day: "Tuesday",
+    workout_type: "Active Recovery / Peloton",
+    exercises: [
+      {
+        name: "Peloton Ride",
+        sets: "1",
+        reps: "15–20 min",
+        weight: "Low",
+        rest: "-",
+        notes: "Optional",
+        demo_link:
+          "https://www.youtube.com/watch?v=VWxes0CoCKM",
+      },
+      {
+        name: "Mobility Flow",
+        sets: "1",
+        reps: "15 min",
+        weight: "-",
+        rest: "-",
+        notes: "Hips/shoulders focus",
+        demo_link:
+          "https://www.youtube.com/watch?v=qULTwquOuT4",
+      },
+    ],
+  },
+  {
+    date: "2025-11-12",
+    day: "Wednesday",
+    workout_type: "Rest",
+    exercises: [],
+  },
+  {
+    date: "2025-11-13",
+    day: "Thursday",
+    workout_type: "Arms + Core + Back",
+    exercises: [
+      {
+        name: "Single-Arm DB Row",
+        sets: "3",
+        reps: "12–14/arm",
+        weight: "25–30 lbs",
+        rest: "75 sec",
+        notes: "Unilateral back work",
+        demo_link:
+          "https://www.youtube.com/watch?v=roCP6wCXPqo",
+      },
+      {
+        name: "Bicep Curls",
+        sets: "3",
+        reps: "12–14",
+        weight: "15–25 lbs",
+        rest: "75 sec",
+        notes: "Shorter rest",
+        demo_link:
+          "https://www.youtube.com/watch?v=QZEqB6wUPxQ",
+      },
+      {
+        name: "Band Pull-Aparts",
+        sets: "3",
+        reps: "20–25",
+        weight: "Light",
+        rest: "45 sec",
+        notes: "High rep rear delts",
+        demo_link:
+          "https://www.youtube.com/watch?v=0Po47vvj9g4",
+      },
+      {
+        name: "Bench Dips",
+        sets: "3",
+        reps: "10–14",
+        weight: "Bodyweight",
+        rest: "75 sec",
+        notes: "Density up",
+        demo_link:
+          "https://www.youtube.com/watch?v=0326dy_-CzM",
+      },
+      {
+        name: "Plank + Reach",
+        sets: "3",
+        reps: "8/side",
+        weight: "Bodyweight",
+        rest: "45–60 sec",
+        notes: "Anti-rotation",
+        demo_link:
+          "https://www.youtube.com/watch?v=4zzN-fbYuvQ",
+      },
+    ],
+  },
+  {
+    date: "2025-11-14",
+    day: "Friday",
+    workout_type: "Back + Chest",
+    exercises: [
+      {
+        name: "Band Rows",
+        sets: "3",
+        reps: "15–20",
+        weight: "Moderate–Heavy",
+        rest: "60–75 sec",
+        notes: "High volume, full stretch",
+        demo_link:
+          "https://www.youtube.com/watch?v=FFBhJguhDWc",
+      },
+      {
+        name: "Dumbbell Bench Press",
+        sets: "3",
+        reps: "10–12",
+        weight: "25–30 lbs",
+        rest: "75 sec",
+        notes: "Shorter rest",
+        demo_link:
+          "https://www.youtube.com/watch?v=QsYre__-aro",
+      },
+      {
+        name: "Incline DB Press",
+        sets: "3",
+        reps: "10–12",
+        weight: "20–25 lbs",
+        rest: "75 sec",
+        notes: "Density",
+        demo_link:
+          "https://www.youtube.com/watch?v=8iPEnn-ltC8",
+      },
+      {
+        name: "Band Pull-Aparts",
+        sets: "3",
+        reps: "20–25",
+        weight: "Light",
+        rest: "45 sec",
+        notes: "Rear delt pump",
+        demo_link:
+          "https://www.youtube.com/watch?v=0Po47vvj9g4",
+      },
+      {
+        name: "Peloton Ride",
+        sets: "1",
+        reps: "15–20 min",
+        weight: "Low",
+        rest: "-",
+        notes: "Optional",
+        demo_link:
+          "https://www.youtube.com/watch?v=VWxes0CoCKM",
+      },
+    ],
+  },
+  {
+    date: "2025-11-15",
+    day: "Saturday",
+    workout_type: "Rest",
+    exercises: [],
+  },
+  {
+    date: "2025-11-16",
+    day: "Sunday",
+    workout_type: "Push + Rear Delts",
+    exercises: [
+      {
+        name: "DB Shoulder Press",
+        sets: "3",
+        reps: "10–12",
+        weight: "20–25 lbs",
+        rest: "75 sec",
+        notes: "Density up",
+        demo_link:
+          "https://www.youtube.com/watch?v=qEwKCR5JCog",
+      },
+      {
+        name: "Lateral Raises (Partial reps at end)",
+        sets: "3",
+        reps: "12–15 + 5",
+        weight: "15 lbs",
+        rest: "60 sec",
+        notes: "Pump",
+        demo_link:
+          "https://www.youtube.com/watch?v=3VcKaXpzqRo",
+      },
+      {
+        name: "Band Face Pulls",
+        sets: "3",
+        reps: "15–20",
+        weight: "Moderate",
+        rest: "60 sec",
+        notes: "External rotation",
+        demo_link:
+          "https://www.youtube.com/watch?v=eIq5CB9JfKE",
+      },
+      {
+        name: "Close-Grip Push-Ups",
+        sets: "3",
+        reps: "10–14",
+        weight: "Bodyweight",
+        rest: "60 sec",
+        notes: "AMRAP-1",
+        demo_link:
+          "https://www.youtube.com/watch?v=GN8EkLpezEg",
+      },
+    ],
+  },
+  {
+    date: "2025-11-17",
+    day: "Monday",
+    workout_type: "Core + Back",
+    exercises: [
+      {
+        name: "Reverse Crunch",
+        sets: "3",
+        reps: "12–15",
+        weight: "Bodyweight",
+        rest: "60 sec",
+        notes: "Posterior tilt",
+        demo_link:
+          "https://www.youtube.com/watch?v=hyB9zn1eSLk",
+      },
+      {
+        name: "Band Rows (High rep)",
+        sets: "3",
+        reps: "15–20",
+        weight: "Light–Mod",
+        rest: "60 sec",
+        notes: "Tempo 2-0-2",
+        demo_link: "https://www.youtube.com/watch?v=X4vTKJoG7u0",
+      },
+      {
+        name: "Prone YTWs",
+        sets: "3",
+        reps: "10–12",
+        weight: "Bodyweight",
+        rest: "60 sec",
+        notes: "Scap control",
+        demo_link:
+          "https://www.youtube.com/watch?v=eUWCjADbSfM",
+      },
+      {
+        name: "Side Plank",
+        sets: "3",
+        reps: "30–45 sec/side",
+        weight: "Bodyweight",
+        rest: "45–60 sec",
+        notes: "Hips tall",
+        demo_link:
+          "https://www.youtube.com/watch?v=K2VljzCC4gs",
+      },
+    ],
+  },
+  {
+    date: "2025-11-18",
+    day: "Tuesday",
+    workout_type: "Active Recovery / Peloton",
+    exercises: [
+      {
+        name: "Peloton Ride",
+        sets: "1",
+        reps: "15–20 min",
+        weight: "Low",
+        rest: "-",
+        notes: "Optional",
+        demo_link:
+          "https://www.youtube.com/watch?v=VWxes0CoCKM",
+      },
+      {
+        name: "Mobility Flow",
+        sets: "1",
+        reps: "15 min",
+        weight: "-",
+        rest: "-",
+        notes: "Hips/shoulders focus",
+        demo_link:
+          "https://www.youtube.com/watch?v=qULTwquOuT4",
+      },
+    ],
+  },
+  {
+    date: "2025-11-19",
+    day: "Wednesday",
+    workout_type: "Rest",
+    exercises: [],
+  },
+  {
+    date: "2025-11-20",
+    day: "Thursday",
+    workout_type: "Arms + Core + Back",
+    exercises: [
+      {
+        name: "Single-Arm DB Row",
+        sets: "3",
+        reps: "12–14/arm",
+        weight: "25–30 lbs",
+        rest: "75 sec",
+        notes: "Unilateral back work",
+        demo_link:
+          "https://www.youtube.com/watch?v=roCP6wCXPqo",
+      },
+      {
+        name: "Bicep Curls",
+        sets: "3",
+        reps: "12–14",
+        weight: "15–25 lbs",
+        rest: "75 sec",
+        notes: "Shorter rest",
+        demo_link:
+          "https://www.youtube.com/watch?v=QZEqB6wUPxQ",
+      },
+      {
+        name: "Band Pull-Aparts",
+        sets: "3",
+        reps: "20–25",
+        weight: "Light",
+        rest: "45 sec",
+        notes: "High rep rear delts",
+        demo_link:
+          "https://www.youtube.com/watch?v=0Po47vvj9g4",
+      },
+      {
+        name: "Bench Dips",
+        sets: "3",
+        reps: "10–14",
+        weight: "Bodyweight",
+        rest: "75 sec",
+        notes: "Density up",
+        demo_link:
+          "https://www.youtube.com/watch?v=0326dy_-CzM",
+      },
+      {
+        name: "Plank + Reach",
+        sets: "3",
+        reps: "8/side",
+        weight: "Bodyweight",
+        rest: "45–60 sec",
+        notes: "Anti-rotation",
+        demo_link:
+          "https://www.youtube.com/watch?v=4zzN-fbYuvQ",
+      },
+    ],
+  },
+  {
+    date: "2025-11-21",
+    day: "Friday",
+    workout_type: "Back + Chest",
+    exercises: [
+      {
+        name: "Band Rows",
+        sets: "3",
+        reps: "15–20",
+        weight: "Moderate–Heavy",
+        rest: "60–75 sec",
+        notes: "High volume, full stretch",
+        demo_link:
+          "https://www.youtube.com/watch?v=FFBhJguhDWc",
+      },
+      {
+        name: "Dumbbell Bench Press",
+        sets: "3",
+        reps: "10–12",
+        weight: "25–30 lbs",
+        rest: "75 sec",
+        notes: "Shorter rest",
+        demo_link:
+          "https://www.youtube.com/watch?v=QsYre__-aro",
+      },
+      {
+        name: "Incline DB Press",
+        sets: "3",
+        reps: "10–12",
+        weight: "20–25 lbs",
+        rest: "75 sec",
+        notes: "Density",
+        demo_link:
+          "https://www.youtube.com/watch?v=8iPEnn-ltC8",
+      },
+      {
+        name: "Band Pull-Aparts",
+        sets: "3",
+        reps: "20–25",
+        weight: "Light",
+        rest: "45 sec",
+        notes: "Rear delt pump",
+        demo_link:
+          "https://www.youtube.com/watch?v=0Po47vvj9g4",
+      },
+      {
+        name: "Peloton Ride",
+        sets: "1",
+        reps: "15–20 min",
+        weight: "Low",
+        rest: "-",
+        notes: "Optional",
+        demo_link:
+          "https://www.youtube.com/watch?v=VWxes0CoCKM",
+      },
+    ],
+  },
+  {
+    date: "2025-11-22",
+    day: "Saturday",
+    workout_type: "Rest",
+    exercises: [],
+  },
+  {
+    date: "2025-11-23",
+    day: "Sunday",
+    workout_type: "Push + Rear Delts",
+    exercises: [
+      {
+        name: "DB Shoulder Press",
+        sets: "3",
+        reps: "10–12",
+        weight: "20–25 lbs",
+        rest: "75 sec",
+        notes: "Density up",
+        demo_link:
+          "https://www.youtube.com/watch?v=qEwKCR5JCog",
+      },
+      {
+        name: "Lateral Raises (Partial reps at end)",
+        sets: "3",
+        reps: "12–15 + 5",
+        weight: "15 lbs",
+        rest: "60 sec",
+        notes: "Pump",
+        demo_link:
+          "https://www.youtube.com/watch?v=3VcKaXpzqRo",
+      },
+      {
+        name: "Band Face Pulls",
+        sets: "3",
+        reps: "15–20",
+        weight: "Moderate",
+        rest: "60 sec",
+        notes: "External rotation",
+        demo_link:
+          "https://www.youtube.com/watch?v=eIq5CB9JfKE",
+      },
+      {
+        name: "Close-Grip Push-Ups",
+        sets: "3",
+        reps: "10–14",
+        weight: "Bodyweight",
+        rest: "60 sec",
+        notes: "AMRAP-1",
+        demo_link:
+          "https://www.youtube.com/watch?v=GN8EkLpezEg",
+      },
+    ],
+  },
+  {
+    date: "2025-11-24",
+    day: "Monday",
+    workout_type: "Core + Back",
+    exercises: [
+      {
+        name: "Reverse Crunch",
+        sets: "3",
+        reps: "12–15",
+        weight: "Bodyweight",
+        rest: "60 sec",
+        notes: "Posterior tilt",
+        demo_link:
+          "https://www.youtube.com/watch?v=hyB9zn1eSLk",
+      },
+      {
+        name: "Plank Hold",
+        sets: "3",
+        reps: "30–45 sec",
+        weight: "Bodyweight",
+        rest: "60 sec",
+        notes: "Brace",
+        demo_link:
+          "https://www.youtube.com/watch?v=39yB4VGMXvg",
+      },
+      {
+        name: "Band Rows (Unilateral)",
+        sets: "3",
+        reps: "12/side",
+        weight: "Light–Mod",
+        rest: "60 sec",
+        notes: "Stability",
+        demo_link:
+          "https://www.youtube.com/watch?v=FFBhJguhDWc",
+      },
+    ],
+  },
+  {
+    date: "2025-11-25",
+    day: "Tuesday",
+    workout_type: "Arms + Core + Back (Light)",
+    exercises: [
+      {
+        name: "Band Rows",
+        sets: "3",
+        reps: "15–20",
+        weight: "Light–Mod",
+        rest: "60 sec",
+        notes: "Deload week - lighter",
+        demo_link:
+          "https://www.youtube.com/watch?v=FFBhJguhDWc",
+      },
+      {
+        name: "Band Bicep Curls",
+        sets: "3",
+        reps: "12–15",
+        weight: "Light–Mod",
+        rest: "60 sec",
+        notes: "Slow tempo",
+        demo_link:
+          "https://www.youtube.com/watch?v=kawBY5p29fQ",
+      },
+      {
+        name: "Band Face Pulls",
+        sets: "3",
+        reps: "15–20",
+        weight: "Light",
+        rest: "45–60 sec",
+        notes: "Upper back health",
+        demo_link:
+          "https://www.youtube.com/watch?v=eIq5CB9JfKE",
+      },
+      {
+        name: "Bench/Chair Dips",
+        sets: "3",
+        reps: "10–12",
+        weight: "Bodyweight",
+        rest: "60 sec",
+        notes: "Control bottom",
+        demo_link:
+          "https://www.youtube.com/watch?v=0326dy_-CzM",
+      },
+      {
+        name: "Plank Shoulder Taps",
+        sets: "3",
+        reps: "20 taps",
+        weight: "Bodyweight",
+        rest: "60 sec",
+        notes: "Anti-rotation",
+        demo_link:
+          "https://www.youtube.com/watch?v=bK_hoLINikc",
+      },
+    ],
+  },
+  {
+    date: "2025-11-26",
+    day: "Wednesday",
+    workout_type: "Back + Chest (Light)",
+    exercises: [
+      {
+        name: "Band Rows",
+        sets: "4",
+        reps: "15–20",
+        weight: "Light–Mod",
+        rest: "60 sec",
+        notes: "Pull priority, deload",
+        demo_link:
+          "https://www.youtube.com/watch?v=FFBhJguhDWc",
+      },
+      {
+        name: "Push-Ups",
+        sets: "3",
+        reps: "10–15",
+        weight: "Bodyweight",
+        rest: "60 sec",
+        notes: "Full range",
+        demo_link: "https://www.youtube.com/watch?v=IODxDxX7oi4",
+      },
+      {
+        name: "Prone YTWs",
+        sets: "3",
+        reps: "10–12",
+        weight: "Bodyweight",
+        rest: "60 sec",
+        notes: "Scapular health",
+        demo_link:
+          "https://www.youtube.com/watch?v=eUWCjADbSfM",
+      },
+      {
+        name: "Supermans",
+        sets: "3",
+        reps: "10–12",
+        weight: "Bodyweight",
+        rest: "60 sec",
+        notes: "Pause at top",
+        demo_link:
+          "https://www.youtube.com/watch?v=z6PJMT2y8GQ",
+      },
+      {
+        name: "Band Pull-Aparts",
+        sets: "3",
+        reps: "20–25",
+        weight: "Light",
+        rest: "45 sec",
+        notes: "Rear delt finisher",
+        demo_link:
+          "https://www.youtube.com/watch?v=0Po47vvj9g4",
+      },
+    ],
+  },
+  {
+    date: "2025-11-27",
+    day: "Thursday",
+    workout_type: "Rest",
+    exercises: [],
+  },
+  {
+    date: "2025-11-28",
+    day: "Friday",
+    workout_type: "Arms + Core + Back (Light)",
+    exercises: [
+      {
+        name: "Band Rows",
+        sets: "3",
+        reps: "15–20",
+        weight: "Light–Mod",
+        rest: "60 sec",
+        notes: "Deload week - lighter",
+        demo_link:
+          "https://www.youtube.com/watch?v=FFBhJguhDWc",
+      },
+      {
+        name: "Band Bicep Curls",
+        sets: "3",
+        reps: "12–15",
+        weight: "Light–Mod",
+        rest: "60 sec",
+        notes: "Slow tempo",
+        demo_link:
+          "https://www.youtube.com/watch?v=kawBY5p29fQ",
+      },
+      {
+        name: "Band Face Pulls",
+        sets: "3",
+        reps: "15–20",
+        weight: "Light",
+        rest: "45–60 sec",
+        notes: "Upper back health",
+        demo_link:
+          "https://www.youtube.com/watch?v=eIq5CB9JfKE",
+      },
+      {
+        name: "Bench/Chair Dips",
+        sets: "3",
+        reps: "10–12",
+        weight: "Bodyweight",
+        rest: "60 sec",
+        notes: "Control bottom",
+        demo_link:
+          "https://www.youtube.com/watch?v=0326dy_-CzM",
+      },
+      {
+        name: "Plank Shoulder Taps",
+        sets: "3",
+        reps: "20 taps",
+        weight: "Bodyweight",
+        rest: "60 sec",
+        notes: "Anti-rotation",
+        demo_link:
+          "https://www.youtube.com/watch?v=bK_hoLINikc",
+      },
+    ],
+  },
+  {
+    date: "2025-11-29",
+    day: "Saturday",
+    workout_type: "Rest",
+    exercises: [],
+  },
+];
+
+const WorkoutApp = () => {
+  const [completed, setCompleted] = useState(() => {
+    const saved = localStorage.getItem("workoutProgress");
+    return saved ? JSON.parse(saved) : {};
+  });
+
+  const [expandedWorkout, setExpandedWorkout] = useState(null);
+
+  useEffect(() => {
+    localStorage.setItem("workoutProgress", JSON.stringify(completed));
+  }, [completed]);
+
+  const toggleExercise = (date, idx) => {
+    const key = `${date}-${idx}`;
+    setCompleted((prev) => ({ ...prev, [key]: !prev[key] }));
+  };
+
+  const getProgress = (date, exercises) => {
+    if (exercises.length === 0) return 100;
+    const done = exercises.filter((_, idx) => completed[`${date}-${idx}`]).length;
+    return Math.round((done / exercises.length) * 100);
+  };
+
+  return (
+    <div className="min-h-screen bg-[#fafafa]">
+      {/* Linear-style header */}
+      <header className="bg-white border-b border-gray-200/80 backdrop-blur-sm sticky top-0 z-50">
+        <div className="max-w-6xl mx-auto px-8 py-5">
+          <div className="flex items-center justify-between">
+            <div>
+              <h1 className="text-xl font-semibold text-gray-900 tracking-tight">November Workouts</h1>
+              <p className="text-sm text-gray-500 mt-0.5">Progressive training program</p>
+            </div>
+            <div className="flex items-center gap-1.5">
+              <button className="px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 rounded-lg transition-all">
+                Calendar
+              </button>
+              <button className="px-4 py-2 text-sm font-medium bg-black text-white rounded-lg hover:bg-gray-900 transition-all">
+                List
+              </button>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      {/* Main content */}
+      <main className="max-w-6xl mx-auto px-8 py-8">
+        <div className="space-y-2">
+          {workoutData.map((workout, idx) => {
+            const progress = getProgress(workout.date, workout.exercises);
+            const isExpanded = expandedWorkout === workout.date;
+            const isRest = workout.exercises.length === 0;
+
+            return (
+              <div
+                key={idx}
+                className="bg-white rounded-lg border border-gray-200/60 overflow-hidden hover:border-gray-300 hover:shadow-sm transition-all duration-150"
+              >
+                {/* Workout card header */}
+                <div
+                  className="px-4 py-4 cursor-pointer"
+                  onClick={() => setExpandedWorkout(isExpanded ? null : workout.date)}
+                >
+                  <div className="flex items-start justify-between gap-3">
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-center gap-2 mb-1">
+                        <h3 className="text-base font-semibold text-gray-900 tracking-tight">
+                          {new Date(workout.date).toLocaleDateString("en-US", {
+                            month: "short",
+                            day: "numeric",
+                          })}
+                        </h3>
+                        <span className="text-sm text-gray-500">{workout.day}</span>
+                      </div>
+                      <p className="text-sm text-gray-700 truncate">{workout.workout_type}</p>
+                      {!isRest && (
+                        <div className="flex items-center gap-2 mt-2">
+                          <div className="flex-1 h-1 bg-gray-200 rounded-full overflow-hidden">
+                            <div
+                              className="h-full bg-black rounded-full transition-all duration-300"
+                              style={{ width: `${progress}%` }}
+                            />
+                          </div>
+                          <span className="text-xs font-medium text-gray-500 tabular-nums">{progress}%</span>
+                        </div>
+                      )}
+                    </div>
+
+                    <ChevronRight
+                      size={18}
+                      strokeWidth={2}
+                      className={`text-gray-400 transition-transform duration-200 flex-shrink-0 mt-1 ${isExpanded ? "rotate-90" : ""}`}
+                    />
+                  </div>
+                </div>
+
+                {/* Expanded exercises */}
+                {isExpanded && !isRest && (
+                  <div className="border-t border-gray-100/80 bg-gray-50/30">
+                    {workout.exercises.map((exercise, exIdx) => {
+                      const isCompleted = completed[`${workout.date}-${exIdx}`];
+
+                      return (
+                        <div
+                          key={exIdx}
+                          className={`px-4 py-4 border-b border-gray-100 last:border-b-0 hover:bg-gray-50/50 transition-colors ${
+                            isCompleted ? "opacity-50" : ""
+                          }`}
+                        >
+                          <div className="flex items-start gap-3">
+                            <button
+                              onClick={() => toggleExercise(workout.date, exIdx)}
+                              className="flex-shrink-0 mt-0.5"
+                            >
+                              {isCompleted ? (
+                                <div className="w-5 h-5 rounded-md bg-black flex items-center justify-center">
+                                  <Check size={13} strokeWidth={2.5} className="text-white" />
+                                </div>
+                              ) : (
+                                <div className="w-5 h-5 rounded-md border-2 border-gray-300 hover:border-black transition-all" />
+                              )}
+                            </button>
+
+                            <div className="flex-1 min-w-0">
+                              <div className="flex items-start justify-between gap-3 mb-2">
+                                <h4
+                                  className={`text-sm font-medium text-gray-900 tracking-tight ${
+                                    isCompleted ? "line-through" : ""
+                                  }`}
+                                >
+                                  {exercise.name}
+                                </h4>
+                                {exercise.demo_link && (
+                                  <a
+                                    href={exercise.demo_link}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="flex-shrink-0 px-3 py-1.5 text-xs font-medium bg-black text-white rounded-md hover:bg-gray-900 transition-all flex items-center gap-1.5"
+                                    onClick={(e) => e.stopPropagation()}
+                                  >
+                                    <Play size={11} strokeWidth={2} fill="white" />
+                                    Demo
+                                  </a>
+                                )}
+                              </div>
+
+                              <div className="grid grid-cols-2 gap-x-4 gap-y-1.5 text-xs">
+                                <div className="flex items-baseline gap-1.5">
+                                  <span className="text-gray-500 uppercase tracking-wide text-[10px]">Sets</span>
+                                  <span className="text-gray-900 font-medium font-mono">{exercise.sets}</span>
+                                </div>
+                                <div className="flex items-baseline gap-1.5">
+                                  <span className="text-gray-500 uppercase tracking-wide text-[10px]">Reps</span>
+                                  <span className="text-gray-900 font-medium font-mono">{exercise.reps}</span>
+                                </div>
+                                <div className="flex items-baseline gap-1.5">
+                                  <span className="text-gray-500 uppercase tracking-wide text-[10px]">Weight</span>
+                                  <span className="text-gray-900 font-medium font-mono">{exercise.weight}</span>
+                                </div>
+                                <div className="flex items-baseline gap-1.5">
+                                  <span className="text-gray-500 uppercase tracking-wide text-[10px]">Rest</span>
+                                  <span className="text-gray-900 font-medium font-mono">{exercise.rest}</span>
+                                </div>
+                              </div>
+
+                              {exercise.notes && (
+                                <p className="mt-2 text-xs text-gray-500 italic">{exercise.notes}</p>
+                              )}
+                            </div>
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                )}
+
+                {/* Rest day message */}
+                {isExpanded && isRest && (
+                  <div className="px-6 py-12 text-center border-t border-gray-100/80 bg-gray-50/30">
+                    <Activity size={20} className="mx-auto mb-3 text-gray-400" strokeWidth={1.5} />
+                    <p className="text-sm text-gray-600">Rest & Recovery</p>
+                  </div>
+                )}
+              </div>
+            );
+          })}
+        </div>
+
+        {/* Stats */}
+        <div className="mt-8 grid grid-cols-2 md:grid-cols-4 gap-3">
+          {[
+            { label: "Training", value: workoutData.filter((w) => w.exercises.length > 0).length },
+            { label: "Completed", value: Object.values(completed).filter(Boolean).length },
+            { label: "Rest", value: workoutData.filter((w) => w.exercises.length === 0).length },
+            { label: "Total Exercises", value: workoutData.reduce((sum, w) => sum + w.exercises.length, 0) },
+          ].map((stat, idx) => (
+            <div key={idx} className="bg-white rounded-lg border border-gray-200/60 p-5 hover:border-gray-300 hover:shadow-sm transition-all">
+              <div className="text-3xl font-semibold text-gray-900 tracking-tight tabular-nums">{stat.value}</div>
+              <div className="text-xs text-gray-500 mt-1.5 uppercase tracking-wide">{stat.label}</div>
+            </div>
+          ))}
+        </div>
+      </main>
+    </div>
+  );
+};
+
+export default WorkoutApp;
