@@ -1247,10 +1247,14 @@ const WorkoutApp = () => {
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center gap-2 mb-1">
                         <h3 className="text-base font-semibold text-gray-900 tracking-tight">
-                          {new Date(workout.date).toLocaleDateString("en-US", {
-                            month: "short",
-                            day: "numeric",
-                          })}
+                          {(() => {
+                            const [year, month, day] = workout.date.split("-");
+                            const date = new Date(parseInt(year), parseInt(month) - 1, parseInt(day));
+                            return date.toLocaleDateString("en-US", {
+                              month: "short",
+                              day: "numeric",
+                            });
+                          })()}
                         </h3>
                         <span className="text-sm text-gray-500">{workout.day}</span>
                       </div>
