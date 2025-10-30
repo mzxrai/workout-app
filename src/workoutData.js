@@ -74,6 +74,16 @@ const workoutData = [
         demo_link:
           "https://www.youtube.com/results?search_query=Weighted+Plank+proper+form+short",
       },
+      {
+        name: "Calf Raises",
+        sets: "3",
+        reps: "15–20",
+        weight: "Bodyweight",
+        rest: "60 sec",
+        notes: "Start light, test knees",
+        demo_link:
+          "https://www.youtube.com/results?search_query=Calf+Raises+proper+form+short",
+      },
     ],
   },
   {
@@ -214,6 +224,16 @@ const workoutData = [
         demo_link:
           "https://www.youtube.com/results?search_query=Tricep+Kickbacks+proper+form+short",
       },
+      {
+        name: "Calf Raises",
+        sets: "3",
+        reps: "15–20",
+        weight: "Bodyweight",
+        rest: "60 sec",
+        notes: "Start light, test knees",
+        demo_link:
+          "https://www.youtube.com/results?search_query=Calf+Raises+proper+form+short",
+      },
     ],
   },
   {
@@ -252,14 +272,14 @@ const workoutData = [
           "https://www.youtube.com/results?search_query=Band+Face+Pulls+proper+form+short",
       },
       {
-        name: "Dead Bugs",
+        name: "Lying Leg Raises",
         sets: "3",
-        reps: "8/side",
+        reps: "10–12",
         weight: "Bodyweight",
         rest: "60 sec",
-        notes: "Ribs down",
+        notes: "Lower back pressed",
         demo_link:
-          "https://www.youtube.com/results?search_query=Dead+Bugs+proper+form+short",
+          "https://www.youtube.com/results?search_query=Lying+Leg+Raises+proper+form+short",
       },
       {
         name: "Weighted Plank",
@@ -270,6 +290,16 @@ const workoutData = [
         notes: "Brace hard",
         demo_link:
           "https://www.youtube.com/results?search_query=Weighted+Plank+proper+form+short",
+      },
+      {
+        name: "Calf Raises",
+        sets: "3",
+        reps: "15–20",
+        weight: "Bodyweight",
+        rest: "60 sec",
+        notes: "Start light, test knees",
+        demo_link:
+          "https://www.youtube.com/results?search_query=Calf+Raises+proper+form+short",
       },
     ],
   },
@@ -294,7 +324,7 @@ const workoutData = [
         reps: "10–15 min",
         weight: "-",
         rest: "-",
-        notes: "Add T-spine openers",
+        notes: "Hip circles, 90/90 hip stretch, Cat-cow, T-spine rotations, World's greatest stretch - NO deep squats (knee protection)",
         demo_link:
           "https://www.youtube.com/results?search_query=Mobility+Flow+proper+form+short",
       },
@@ -372,14 +402,24 @@ const workoutData = [
           "https://www.youtube.com/results?search_query=Band+Face+Pulls+proper+form+short",
       },
       {
-        name: "Weighted Dead Bug",
+        name: "Lying Leg Raises",
         sets: "3",
-        reps: "8/side",
-        weight: "10–15 lbs",
+        reps: "10–12",
+        weight: "Bodyweight",
         rest: "60 sec",
-        notes: "Slow",
+        notes: "Lower back pressed, controlled",
         demo_link:
-          "https://www.youtube.com/results?search_query=Weighted+Dead+Bug+proper+form+short",
+          "https://www.youtube.com/results?search_query=Lying+Leg+Raises+proper+form+short",
+      },
+      {
+        name: "Calf Raises",
+        sets: "3",
+        reps: "15–20",
+        weight: "Bodyweight",
+        rest: "60 sec",
+        notes: "Progress if feeling good",
+        demo_link:
+          "https://www.youtube.com/results?search_query=Calf+Raises+proper+form+short",
       },
     ],
   },
@@ -521,6 +561,16 @@ const workoutData = [
         demo_link:
           "https://www.youtube.com/results?search_query=Overhead+DB+Tricep+Ext+proper+form+short",
       },
+      {
+        name: "Calf Raises",
+        sets: "3",
+        reps: "15–20",
+        weight: "10 lbs",
+        rest: "60 sec",
+        notes: "Add light weight if feeling good",
+        demo_link:
+          "https://www.youtube.com/results?search_query=Calf+Raises+proper+form+short",
+      },
     ],
   },
   {
@@ -590,7 +640,7 @@ const workoutData = [
         reps: "15 min",
         weight: "-",
         rest: "-",
-        notes: "Hips/shoulders focus",
+        notes: "Hip 90/90 stretch, Arm circles, Shoulder dislocations with band, Thread the needle, Child's pose - NO deep squats (knee protection)",
         demo_link:
           "https://www.youtube.com/results?search_query=Mobility+Flow+proper+form+short",
       },
@@ -676,6 +726,16 @@ const workoutData = [
         notes: "Anti-rotation",
         demo_link:
           "https://www.youtube.com/results?search_query=Plank+++Reach+proper+form+short",
+      },
+      {
+        name: "Calf Raises",
+        sets: "3",
+        reps: "15–20",
+        weight: "15 lbs",
+        rest: "60 sec",
+        notes: "Progress weight if comfortable",
+        demo_link:
+          "https://www.youtube.com/results?search_query=Calf+Raises+proper+form+short",
       },
     ],
   },
@@ -817,6 +877,16 @@ const workoutData = [
         demo_link:
           "https://www.youtube.com/results?search_query=Tricep+Rope/Band+Pressdowns+proper+form+short",
       },
+      {
+        name: "Calf Raises",
+        sets: "3",
+        reps: "15–20",
+        weight: "15 lbs",
+        rest: "60 sec",
+        notes: "Peak week - push it",
+        demo_link:
+          "https://www.youtube.com/results?search_query=Calf+Raises+proper+form+short",
+      },
     ],
   },
   {
@@ -886,7 +956,7 @@ const workoutData = [
         reps: "15 min",
         weight: "-",
         rest: "-",
-        notes: "Hips/shoulders focus",
+        notes: "Hip 90/90 stretch, Arm circles, Shoulder dislocations with band, Thread the needle, Child's pose - NO deep squats (knee protection)",
         demo_link:
           "https://www.youtube.com/results?search_query=Mobility+Flow+proper+form+short",
       },
@@ -972,6 +1042,16 @@ const workoutData = [
         notes: "Anti-rotation",
         demo_link:
           "https://www.youtube.com/results?search_query=Plank+++Reach+proper+form+short",
+      },
+      {
+        name: "Calf Raises",
+        sets: "3",
+        reps: "15–20",
+        weight: "15–20 lbs",
+        rest: "60 sec",
+        notes: "Maintain peak strength",
+        demo_link:
+          "https://www.youtube.com/results?search_query=Calf+Raises+proper+form+short",
       },
     ],
   },
@@ -1112,6 +1192,16 @@ const workoutData = [
         notes: "Lockout squeeze",
         demo_link:
           "https://www.youtube.com/results?search_query=Tricep+Rope/Band+Pressdowns+proper+form+short",
+      },
+      {
+        name: "Calf Raises",
+        sets: "3",
+        reps: "15–20",
+        weight: "15–20 lbs",
+        rest: "60 sec",
+        notes: "Final push before deload",
+        demo_link:
+          "https://www.youtube.com/results?search_query=Calf+Raises+proper+form+short",
       },
     ],
   },
